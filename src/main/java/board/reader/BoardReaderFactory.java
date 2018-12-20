@@ -1,4 +1,4 @@
-package main.board.reader;
+package board.reader;
 
 import org.apache.commons.lang3.NotImplementedException;
 

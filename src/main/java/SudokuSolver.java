@@ -1,6 +1,4 @@
-package main;
-
-import main.board.Board;
+import board.Board;
 
 import java.io.IOException;
 

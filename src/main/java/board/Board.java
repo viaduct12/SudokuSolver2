@@ -1,15 +1,10 @@
-package main.board;
+package board;
 
-import main.board.reader.BoardReader;
-import main.board.reader.BoardReaderFactory;
-import main.board.reader.SdkBoardReader;
+import board.reader.BoardReader;
+import board.reader.BoardReaderFactory;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Board {
     private List<List<Integer>> board;
@@ -17,6 +12,10 @@ public class Board {
     public Board(String filePath) throws IOException {
         BoardReader reader = BoardReaderFactory.getReader(filePath);
         this.board = reader.parseBoard(filePath);
+    }
+
+    List<List<Integer>> getBoard() {
+        return board;
     }
 
     public String toString() {
