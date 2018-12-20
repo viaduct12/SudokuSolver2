@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class Board {
-    private List<List<Integer>> board;
+    private final List<List<Integer>> board;
 
     public Board(String filePath) throws IOException {
         BoardReader reader = BoardReaderFactory.getReader(filePath);
