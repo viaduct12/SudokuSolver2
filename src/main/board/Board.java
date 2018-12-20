@@ -1,4 +1,8 @@
-package main;
+package main.board;
+
+import main.board.reader.BoardReader;
+import main.board.reader.BoardReaderFactory;
+import main.board.reader.SdkBoardReader;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,19 +11,12 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class Board {
+public class Board {
     private List<List<Integer>> board;
 
-    Board(String filePath) throws IOException {
-        Path path = Paths.get(filePath);
-
-        this.board = Files.lines(path).map(s -> s.chars().mapToObj(value -> {
-            if (value == '.') {
-                return null;
-            } else {
-                return Character.getNumericValue(value);
-            }
-        }).collect(Collectors.toList())).collect(Collectors.toList());
+    public Board(String filePath) throws IOException {
+        BoardReader reader = BoardReaderFactory.getReader(filePath);
+        this.board = reader.parseBoard(filePath);
     }
 
     public String toString() {
